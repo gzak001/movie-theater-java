@@ -1,11 +1,13 @@
-package com.jpmc.theater;
+package com.jpmc.theater.domain;
 
 import java.time.LocalDateTime;
+
 
 public class Showing {
     private Movie movie;
     private int sequenceOfTheDay;
     private LocalDateTime showStartTime;
+
 
     public Showing(Movie movie, int sequenceOfTheDay, LocalDateTime showStartTime) {
         this.movie = movie;
@@ -17,23 +19,28 @@ public class Showing {
         return movie;
     }
 
-    public LocalDateTime getStartTime() {
-        return showStartTime;
-    }
-
-    public boolean isSequence(int sequence) {
-        return this.sequenceOfTheDay == sequence;
-    }
-
-    public double getMovieFee() {
-        return movie.getTicketPrice();
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     public int getSequenceOfTheDay() {
         return sequenceOfTheDay;
     }
 
-    private double calculateFee(int audienceCount) {
-        return movie.calculateTicketPrice(this) * audienceCount;
+    public void setSequenceOfTheDay(int sequenceOfTheDay) {
+        this.sequenceOfTheDay = sequenceOfTheDay;
     }
+
+    public boolean isSequence(int sequence) {
+        return this.sequenceOfTheDay == sequence;
+    }
+
+    public LocalDateTime getShowStartTime() {
+        return showStartTime;
+    }
+
+    public void setShowStartTime(LocalDateTime showStartTime) {
+        this.showStartTime = showStartTime;
+    }
+
 }
